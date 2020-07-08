@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.answer.contest.mapper.QuestionMapper">
+  <resultMap id="BaseResultMap" type="com.answer.contest.entity.Question">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="correct" jdbcType="VARCHAR" property="correct" />
+    <result column="major_type" jdbcType="INTEGER" property="userName" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.answer.contest.mapper.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.answer.contest.entity.Record">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="use_time" jdbcType="BIGINT" property="useTime" />
+    <result column="total_score" jdbcType="INTEGER" property="totalScore" />
+    <result column="is_cross_sector" jdbcType="BIT" property="isCrossSector" />
+  </resultMap>
+
+  <select id="getRecordList" resultMap="BaseResultMap">
+    SELECT r.user_id,r.user_name, r.use_time, r.is_cross_sector, (SELECT count(*) from record_detail
+      where is_correct = true and record_id = r.id) AS total_score
+      FROM `record` r
+      order by r.use_time, r.is_cross_sector desc, total_score desc
+  </select>
+</mapper>
